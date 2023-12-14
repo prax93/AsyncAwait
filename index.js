@@ -2,23 +2,7 @@ import { getMoviesAndStoreThem } from "./fetchservice.js";
 
 let moviesList = []
 
-async function getMovies() {
-  try {
-    let movies = await getMoviesAndStoreThem()
-
-    if(!movies.error){
-      return movies
-    }
-    else {
-      throw new Error(movies.error.message)
-    }
-
-  } catch (error) {
-    return error
-  }
-}
-
-moviesList = await getMovies()
+moviesList = await getMoviesAndStoreThem()
 
 if(!moviesList instanceof Error){
 
@@ -28,5 +12,5 @@ if(!moviesList instanceof Error){
 
 }
 else{
-  console.log(moviesList.message)
+  console.log(moviesList)
 }
