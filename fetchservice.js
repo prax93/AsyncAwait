@@ -1,8 +1,4 @@
 
-
-let movieList = [];
-
-
 export async function getMoviesAndStoreThem() {
 
     try {
@@ -19,7 +15,7 @@ export async function getMoviesAndStoreThem() {
         }
 
     } catch (error) {
-        return { error: error.message };
+        return error;
     }
     
 }

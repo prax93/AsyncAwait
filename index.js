@@ -6,20 +6,27 @@ async function getMovies() {
   try {
     let movies = await getMoviesAndStoreThem()
 
-    if(movies.error){
-      throw new Error(movies.error)
+    if(!movies.error){
+      return movies
     }
     else {
-      return movies
+      throw new Error(movies.error.message)
     }
 
   } catch (error) {
-    console.log(error.message)
+    return error
   }
 }
 
 moviesList = await getMovies()
 
-moviesList.forEach(element => {
-  console.log(element.id)
-});
+if(!moviesList instanceof Error){
+
+  moviesList.forEach(element => {
+    console.log(element.id)
+  })
+
+}
+else{
+  console.log(moviesList.message)
+}
